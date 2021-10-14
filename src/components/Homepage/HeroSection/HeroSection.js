@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { Container, Typography } from '@mui/material';
+import { Typography } from '@mui/material';
 import { Box, styled } from '@mui/system';
 import { useTheme } from '@mui/material/styles';
 import Button from '@mui/material/Button';
@@ -8,6 +8,7 @@ import KeyboardArrowRight from '@mui/icons-material/KeyboardArrowRight';
 import ArrowRightAltIcon from '@mui/icons-material/ArrowRightAlt';
 import SwipeableViews from 'react-swipeable-views';
 import { autoPlay } from 'react-swipeable-views-utils';
+import usePlaces from '../../../hooks/usePlaces';
 
 const AutoPlaySwipeableViews = autoPlay(SwipeableViews);
 
@@ -25,8 +26,11 @@ const HeroContainer = styled('div')(({ theme }) => ({
 
 const HeroSection = () => {
     const theme = useTheme();
+
+    const places = usePlaces();
+    const maxSteps = places && places.length;
+
     const [activeStep, setActiveStep] = React.useState(0);
-    const maxSteps = places.length;
     const [backgroundImg, setBanckgroundImg] = useState(0);
     useEffect(() => setBanckgroundImg(activeStep), [activeStep])
 
@@ -42,14 +46,15 @@ const HeroSection = () => {
     };
 
 
-    return (
+    return (<>{!places ? null :
         <Box id="hero-section" sx={{
             height: '100vh',
             minHeight: '600px',
             background: `url(${places[backgroundImg].imgPath}) center`,
             backgroundSize: 'cover',
             transition: 'background 300ms ease-in 300ms'
-        }}>
+        }
+        }>
             <Box position="absolute" sx={{
                 width: '100%', height: '100%', margin: 0,
                 background: '#00000099'
@@ -90,8 +95,8 @@ const HeroSection = () => {
                             }}>
                                 <AutoPlaySwipeableViews
                                     axis={theme.direction === 'rtl' ? 'x-reverse' : 'x'}
-                                    threshold={5}
                                     index={activeStep}
+                                    interval={5000}
                                     onChangeIndex={handleStepChange}
                                     enableMouseEvents
                                 >
@@ -152,36 +157,8 @@ const HeroSection = () => {
                     </Box>
                 </HeroContainer>
             </Box>
-        </Box>
+        </Box>}</>
     );
 };
 
 export default HeroSection;
-
-
-const places = [
-    {
-        label: "COX'S BAZAR",
-        imgPath: './image/coxs-bazar.png',
-        shortDescription: "Cox's Bazar is a city, fishing port, tourism centre, and district headquarters in southeastern Bangladesh. It is famous mostly for its long natural sandy",
-        description: "Cox’s Bazar is a town on the southeast coast of Bangladesh. It’s known for its very long, sandy beachfront, stretching from Sea Beach in the north to Kolatoli Beach in the south. Aggameda Khyang monastery is home to bronze statues and centuries-old Buddhist manuscripts. South of town, the tropical rainforest of Himchari National Park has waterfalls and many birds. North, sea turtles breed on nearby Sonadia Island."
-    },
-    {
-        label: 'SREEMANGAL',
-        imgPath: './image/sreemangal.png',
-        shortDescription: "Despite being a small administrative unit, an Upazilla, under Moulvibazar district of Sylhet, Sreemangal exists as a prime place for tourists’ attraction having earned the recognition of being a town under the British colonial era in the 19th century.",
-        description: "There are loads of exciting destinations with fascinating scenic beauty scattered in or around the Srimangal upazilla of Maulvibazar district. Madhobpur Lake is one of the main tourist attractions in the area, and is home to the Great White-Bellied Heron, the only confirmed site in Bangladesh. The Baikka beel is also a nearby body of water and home to the Large-billed reed warbler."
-    },
-    {
-        label: 'SUNDARBANS',
-        imgPath: './image/sundarbans.png',
-        shortDescription: "The Sundarbans is a cluster of low-lying islands in the Bay of Bengal, spread across India and Bangladesh, famous for its unique mangrove forests.",
-        description: "Sundarbans is a mangrove area in the delta formed by the confluence of the Ganges, Brahmaputra and Meghna Rivers in the Bay of Bengal. It spans from the Hooghly River in India's state of West Bengal to the Baleswar River in Bangladesh's division of Khulna. This active delta region is among the largest in the world, measuring about 40,000 sq km."
-    },
-    {
-        label: 'SAJEK',
-        imgPath: './image/sajek.png',
-        shortDescription: "Sajek Valley, currently the most popular destination for pilgrims/travelers, is located in the biggest union of Bangladesh, Baghaichari Upazila of Rangamati district.",
-        description: "Sajek Valley is one of the popular tourist spots in Bangladesh situated among the hills of the Kasalong range of mountains in Sajek union, Baghaichhari Upazila in Rangamati District. The valley is 2,000 feet above sea level. Sajek valley is known as the Queen of Hills & Roof of Rangamati."
-    },
-];
