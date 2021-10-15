@@ -1,29 +1,49 @@
 
+#header-logo{
+    width: 180px;
+    filter: brightness(100);
+    padding: 0 20px;
+}
 #header-links{
     flex-grow: 1;
     display: flex;
     justify-content: flex-end;
     align-items: center;
     padding: 0 10px;
-    cursor: pointer;
 }
-#header-links:hover{ font-weight: bold; }
+#header-links p{font-size: 20px;}
+#header-links *:hover{ color: orange }
 
 #searchField::placeholder{
     color: white;
     opacity: 1;
-    font-family: 'Montserrat';
+    font-family: Montserrat;
 }
 
 #header-menu-toggler{
     display: none;
     text-align: right;
+    z-index: 1001;
 }
 
 @media screen and (max-width: 768px) {
     #header > div{flex-wrap: wrap;}
+    #header-logo{width: 130px}
+
     #header-links{
-        display: none;
+        flex-direction: column;
+        justify-content: center;
+        position: fixed;
+        top: 0;
+        right: 0;
+        width: 70%;
+        height: 100%;
+        background: linear-gradient(to right,#00000055,#000000dd);
+        backdrop-filter: blur(5px);
+        z-index: 1000;
+        transform: translateX(100%);
+        transition: transform 500ms;
     }
+    #header-links.show{transform: translateX(0);}
     #header-menu-toggler{display: block; flex-grow: 1;}
 }
