@@ -1,7 +1,6 @@
 
 #header-logo{
     width: 180px;
-    filter: brightness(100);
     padding: 0 20px;
 }
 #header-links{
@@ -12,7 +11,7 @@
     padding: 0 10px;
 }
 #header-links p{font-size: 20px;}
-#header-links *:hover{ color: orange }
+#header-links p:hover{ color: orange }
 
 #searchField::placeholder{
     color: white;
@@ -38,7 +37,6 @@
         right: 0;
         width: 70%;
         height: 100%;
-        background: linear-gradient(to right,#00000055,#000000dd);
         backdrop-filter: blur(5px);
         z-index: 1000;
         transform: translateX(100%);
