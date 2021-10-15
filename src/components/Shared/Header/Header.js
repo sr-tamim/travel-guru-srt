@@ -79,7 +79,7 @@ const Header = () => {
                 background: 'transparent', boxShadow: 'initial'
             }}>
                 <Toolbar sx={{
-                    width: '100%', maxWidth: '1000px', margin: 'auto',
+                    width: '100%', maxWidth: '1400px', margin: 'auto',
                     padding: '20px 10px'
                 }}>
                     <NavLink to="/">
@@ -109,6 +109,13 @@ const Header = () => {
                             <Typography sx={{
                                 padding: '5px 10px'
                             }}>Home</Typography>
+                        </NavLink>
+                        <NavLink to="/destination"
+                            activeStyle={{ color: 'orange' }}
+                            style={{ color: 'white', textDecoration: 'none' }}>
+                            <Typography sx={{
+                                padding: '5px 10px'
+                            }}>Destination</Typography>
                         </NavLink>
                         <NavLink to="/blogs"
                             activeStyle={{ color: 'orange' }}

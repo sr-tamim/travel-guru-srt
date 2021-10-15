@@ -26,7 +26,7 @@
     z-index: 1001;
 }
 
-@media screen and (max-width: 768px) {
+@media screen and (max-width: 900px) {
     #header > div{flex-wrap: wrap;}
     #header-logo{width: 130px}
 
