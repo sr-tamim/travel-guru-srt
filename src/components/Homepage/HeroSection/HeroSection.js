@@ -31,8 +31,8 @@ const HeroSection = () => {
     const maxSteps = places && places.length;
 
     const [activeStep, setActiveStep] = React.useState(0);
-    const [backgroundImg, setBanckgroundImg] = useState(0);
-    useEffect(() => setBanckgroundImg(activeStep), [activeStep])
+    const [backgroundImg, setBackgroundImg] = useState(0);
+    useEffect(() => setBackgroundImg(activeStep), [activeStep])
 
     const handleNext = () => {
         setActiveStep((prevActiveStep) => prevActiveStep + 1);
@@ -101,7 +101,7 @@ const HeroSection = () => {
                                     enableMouseEvents
                                 >
                                     {places.map((step, index) => (
-                                        <div key={step.label} style={{ textAlign: 'center' }}>
+                                        <div key={step.id} style={{ textAlign: 'center' }}>
                                             {Math.abs(activeStep - index) <= 2 ? (
                                                 < Box
                                                     component="div"
@@ -117,7 +117,7 @@ const HeroSection = () => {
                                     ))}
 
                                 </AutoPlaySwipeableViews>
-                                <Typography variant="h4"
+                                <Typography variant="h3"
                                     sx={{
                                         fontFamily: 'Bebas Neue',
                                         width: '100%',
