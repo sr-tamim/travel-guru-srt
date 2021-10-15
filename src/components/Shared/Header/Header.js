@@ -22,15 +22,16 @@ const toggleHeaderVisibility = () => {
 
 const Header = () => {
     const { pathname } = useLocation();
-    const themeColor = pathname === '/home' ? 'white' : 'black';
+    const pageURL = pathname === '/' ? '/home' : pathname;
+    const themeColor = pageURL === '/home' ? 'white' : 'black';
 
     const Search = styled('div')(({ theme }) => ({
         position: 'relative',
         border: '1px solid white',
         borderRadius: theme.shape.borderRadius,
-        backgroundColor: pathname === '/home' ? alpha(theme.palette.common.white, 0.25) : alpha(theme.palette.common.black, 0.25),
+        backgroundColor: pageURL === '/home' ? alpha(theme.palette.common.white, 0.25) : alpha(theme.palette.common.black, 0.25),
         '&:hover': {
-            backgroundColor: pathname === '/home' ? alpha(theme.palette.common.white, 0.2) : alpha(theme.palette.common.black, 0.2),
+            backgroundColor: pageURL === '/home' ? alpha(theme.palette.common.white, 0.2) : alpha(theme.palette.common.black, 0.2),
         },
         margin: '20px 20px 0',
         width: '100%',
@@ -69,7 +70,7 @@ const Header = () => {
 
     const HeaderLinksContainer = styled('div')(({ theme }) => ({
         [theme.breakpoints.down('md')]: {
-            background: pathname === '/home' ? '#00000099' : '#ffffff99'
+            background: pageURL === '/home' ? '#00000099' : '#ffffff99'
         }
     }))
 
@@ -93,13 +94,13 @@ const Header = () => {
                 }}>
                     <NavLink to="/">
                         <Box id='header-logo'
-                            sx={{ filter: pathname === '/home' && 'brightness(100)' }}>
+                            sx={{ filter: pageURL === '/home' && 'brightness(100)' }}>
                             <img src="./logo192.png" alt="" style={{ width: '100%' }} />
                         </Box>
                     </NavLink>
                     <Box id="header-menu-toggler">
                         <IconButton size="large" edge="start"
-                            sx={{ mr: 2, color: pathname === '/home' && 'white' }}
+                            sx={{ mr: 2, color: pageURL === '/home' && 'white' }}
                             aria-label="open drawer"
                             onClick={toggleHeaderVisibility}>
                             <MenuIcon />

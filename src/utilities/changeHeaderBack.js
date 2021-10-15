@@ -1,8 +1,8 @@
 
 const changeHeaderBack = (event) => {
     const headerElement = document.getElementById('header');
-    event.target.scrollTop > 10 ?
-        headerElement.style.background = '#000000bb'
+    event.target.scrollTop || window.scrollY > 10 ?
+        headerElement.style.background = event.target.scrollTop ? '#000000dd' : '#fffffffa'
         : headerElement.style.background = 'transparent';
 };
 
