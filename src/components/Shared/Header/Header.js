@@ -70,16 +70,25 @@ const Header = () => {
 
     return (
         <Box sx={{ flexGrow: 1 }}>
-            <AppBar position="fixed" sx={{ background: 'transparent', boxShadow: 'initial' }}>
+            <AppBar position="fixed" id="header" sx={{
+                background: 'transparent', boxShadow: 'initial'
+            }}>
                 <Toolbar sx={{
                     width: '100%', maxWidth: '1000px', margin: 'auto',
                     padding: '20px 10px'
                 }}>
-                    <Box sx={{
-                        width: '130px', margin: '0 30px 0 0',
-                        filter: 'brightness(100)'
+                    <Box id='header-logo' sx={{
+                        width: '130px', maxWidth: '150px', filter: 'brightness(100)'
                     }}>
                         <img src="./logo192.png" alt="" style={{ width: '100%' }} />
+                    </Box>
+                    <Box id="header-menu-toggler">
+                        <IconButton size="large" edge="start"
+                            color="inherit"
+                            aria-label="open drawer"
+                            sx={{ mr: 2 }} >
+                            <MenuIcon />
+                        </IconButton>
                     </Box>
                     <Search>
                         <SearchIconWrapper>
@@ -90,62 +99,44 @@ const Header = () => {
                             inputProps={{ 'id': 'searchField', 'aria-label': 'search' }}
                         />
                     </Search>
-                    <Box
-                        noWrap
-                        component="div"
-                        sx={{
-                            flexGrow: 1, display: { xs: 'none', sm: 'flex' },
-                            justifyContent: 'flex-end', padding: '0 10px',
-                            cursor: 'pointer',
-                            '&:hover': { fontWeight: 'bold' }
-                        }}>
+                    <Box noWrap id="header-links" component="div" >
                         <Typography sx={{
                             padding: '5px 10px'
                         }}>Blog</Typography>
                         <Typography sx={{
                             padding: '5px 10px'
                         }}>Contact</Typography>
+                        {false ? <Button variant="contained" color="warning">Login</Button> :
+                            <div>
+                                <IconButton
+                                    size="large"
+                                    aria-label="account of current user"
+                                    aria-controls="menu-appbar"
+                                    aria-haspopup="true"
+                                    onClick={handleMenu}
+                                    color="inherit" >
+                                    <AccountCircle />
+                                </IconButton>
+                                <Menu
+                                    id="menu-appbar"
+                                    anchorEl={anchorEl}
+                                    anchorOrigin={{
+                                        vertical: 'top',
+                                        horizontal: 'right',
+                                    }}
+                                    keepMounted
+                                    transformOrigin={{
+                                        vertical: 'top',
+                                        horizontal: 'right',
+                                    }}
+                                    open={Boolean(anchorEl)}
+                                    onClose={handleClose} >
+                                    <MenuItem onClick={handleClose}>Profile</MenuItem>
+                                    <MenuItem onClick={handleClose}>My account</MenuItem>
+                                </Menu>
+                            </div>
+                        }
                     </Box>
-                    <IconButton
-                        size="large"
-                        edge="start"
-                        color="inherit"
-                        aria-label="open drawer"
-                        sx={{ mr: 2 }}
-                    >
-                        <MenuIcon />
-                    </IconButton>
-                    {true ? <Button variant="contained" color="warning">Login</Button> :
-                        <div>
-                            <IconButton
-                                size="large"
-                                aria-label="account of current user"
-                                aria-controls="menu-appbar"
-                                aria-haspopup="true"
-                                onClick={handleMenu}
-                                color="inherit"
-                            >
-                                <AccountCircle />
-                            </IconButton>
-                            <Menu
-                                id="menu-appbar"
-                                anchorEl={anchorEl}
-                                anchorOrigin={{
-                                    vertical: 'top',
-                                    horizontal: 'right',
-                                }}
-                                keepMounted
-                                transformOrigin={{
-                                    vertical: 'top',
-                                    horizontal: 'right',
-                                }}
-                                open={Boolean(anchorEl)}
-                                onClose={handleClose}
-                            >
-                                <MenuItem onClick={handleClose}>Profile</MenuItem>
-                                <MenuItem onClick={handleClose}>My account</MenuItem>
-                            </Menu>
-                        </div>}
                 </Toolbar>
             </AppBar>
         </Box>

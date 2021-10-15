@@ -1,6 +1,29 @@
 
+#header-links{
+    flex-grow: 1;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    padding: 0 10px;
+    cursor: pointer;
+}
+#header-links:hover{ font-weight: bold; }
+
 #searchField::placeholder{
     color: white;
     opacity: 1;
     font-family: 'Montserrat';
+}
+
+#header-menu-toggler{
+    display: none;
+    text-align: right;
+}
+
+@media screen and (max-width: 768px) {
+    #header > div{flex-wrap: wrap;}
+    #header-links{
+        display: none;
+    }
+    #header-menu-toggler{display: block; flex-grow: 1;}
 }

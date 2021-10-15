@@ -9,17 +9,20 @@ import ArrowRightAltIcon from '@mui/icons-material/ArrowRightAlt';
 import SwipeableViews from 'react-swipeable-views';
 import { autoPlay } from 'react-swipeable-views-utils';
 import usePlaces from '../../../hooks/usePlaces';
+import "./HeroSection.css";
+import changeHeaderBack from '../../../utilities/changeHeaderBack';
 
 const AutoPlaySwipeableViews = autoPlay(SwipeableViews);
 
 const HeroContainer = styled('div')(({ theme }) => ({
-    maxWidth: '1200px',
-    display: 'grid',
+    maxWidth: '1200px', height: '100%',
+    display: 'grid', gridGap: '50px',
     gridTemplateColumns: '1fr',
-    padding: '200px 20px',
+    justifyItems: 'center', alignItems: 'center',
+    padding: '180px 20px',
     margin: 'auto',
     [theme.breakpoints.up('md')]: {
-        gridTemplateColumns: 'repeat(2,1fr)'
+        gridTemplateColumns: 'repeat(2,1fr)', gridGap: '20px'
     },
 }));
 
@@ -47,47 +50,32 @@ const HeroSection = () => {
 
 
     return (<>{!places ? null :
-        <Box id="hero-section" sx={{
-            height: '100vh',
-            minHeight: '600px',
+        <Box sx={{
+            height: '100vh', minHeight: '600px',
             background: `url(${places[backgroundImg].imgPath}) center`,
-            backgroundSize: 'cover',
+            backgroundSize: 'cover', backgroundAttachment: 'fixed',
             transition: 'background 300ms ease-in 300ms'
-        }
-        }>
-            <Box position="absolute" sx={{
-                width: '100%', height: '100%', margin: 0,
-                background: '#00000099'
+        }}>
+            <Box position="absolute" onScroll={changeHeaderBack} sx={{
+                width: '100%', height: '100%', margin: 0, overflow: 'auto',
+                background: '#00000099', backgroundAttachment: 'fixed'
             }}>
-                <HeroContainer>
-                    <Box component="div" sx={{
-                        display: 'flex', flexDirection: 'column', justifyContent: 'center'
-                    }}>
-                        <Typography variant="h1" sx={{
-                            textTransform: 'uppercase',
-                            color: 'white', fontSize: '130px',
-                            fontFamily: 'Bebas Neue'
-                        }}>
+                <HeroContainer id="hero-container">
+                    <Box component="div" className="hero-details">
+                        <Typography variant="h1" className="place-name">
                             {places[activeStep]?.label}
                         </Typography>
-                        <p style={{
-                            color: 'white', fontSize: '20px',
-                            letterSpacing: '1px', padding: '10px',
-                        }}>
+                        <p className="place-description">
                             {places[activeStep]?.shortDescription}
                         </p>
                         <Box component="div">
-                            <Button size="large" variant="contained" color="warning" sx={{
-                                fontSize: '20px', fontWeight: 'bold', margin: '20px'
-                            }} >
+                            <Button size="large" variant="contained" color="warning" className="booking">
                                 Booking <ArrowRightAltIcon fontSize="large" />
                             </Button>
                         </Box>
                     </Box>
-                    <Box component="div" sx={{
-                        display: 'flex', justifyContent: 'flex-end'
-                    }}>
-                        <Box sx={{ maxWidth: 400, position: 'relative' }}>
+                    <Box component="div" className="hero-carousel">
+                        <Box sx={{ position: 'relative', marginBottom: '100px' }}>
                             <Box component="div" style={{
                                 border: '5px solid orange',
                                 borderRadius: '15px',
@@ -107,7 +95,7 @@ const HeroSection = () => {
                                                     component="div"
                                                     sx={{
                                                         height: 500,
-                                                        width: 400,
+                                                        width: '100%',
                                                         background: `url(${step.imgPath}) center`,
                                                         backgroundSize: 'cover'
                                                     }}
@@ -144,12 +132,13 @@ const HeroSection = () => {
                                 }}>
                                     <KeyboardArrowLeft fontSize="large" />
                                 </Button>
-                                <Button onClick={handleNext} disabled={activeStep === maxSteps - 1} sx={{
-                                    background: 'white', padding: 0,
-                                    width: 40, height: 60,
-                                    borderRadius: '50%', margin: '10px',
-                                    '&:hover': { background: '#ffdddd' }
-                                }} >
+                                <Button onClick={handleNext}
+                                    disabled={activeStep === maxSteps - 1} sx={{
+                                        background: 'white', padding: 0,
+                                        width: 40, height: 60,
+                                        borderRadius: '50%', margin: '10px',
+                                        '&:hover': { background: '#ffdddd' }
+                                    }} >
                                     <KeyboardArrowRight fontSize="large" />
                                 </Button>
                             </Box>
