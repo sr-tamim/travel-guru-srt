@@ -2,10 +2,21 @@ import React from 'react';
 import { Typography, FormControl, InputLabel, InputAdornment, IconButton, Input, Button } from '@mui/material';
 import "./LoginPage.css";
 import { Visibility, VisibilityOff } from '@mui/icons-material';
-import { Box } from '@mui/system';
+import { Box, styled } from '@mui/system';
 import { NavLink } from 'react-router-dom';
+import useUserContext from '../../Firebase/useUserContext';
+import GoogleIcon from '@mui/icons-material/Google';
+
+const SignInButton = styled(Box)(({ theme }) => ({
+    width: '100%', maxWidth: '400px', textAlign: 'center',
+    display: 'flex', alignItems: 'center',
+    padding: '10px', margin: '20px auto', cursor: 'pointer',
+    border: '1px solid grey', borderRadius: '30px',
+    '&:hover': { background: 'darkorange', color: 'white' },
+}))
 
 const LoginPage = () => {
+    const { googleLogin } = useUserContext();
     const [values, setValues] = React.useState({
         password: '',
         showPassword: false,
@@ -29,7 +40,7 @@ const LoginPage = () => {
     return (
         <>
             <div className="login-container">
-                <div>
+                <div className="form-container">
                     <Typography variant="h3" >Login</Typography>
                     <form>
                         <FormControl sx={{ m: 1 }} color="warning" variant="standard" fullWidth >
@@ -73,6 +84,10 @@ const LoginPage = () => {
                         </Box>
                     </form>
                 </div>
+                <SignInButton onClick={googleLogin}>
+                    <GoogleIcon sx={{ mr: 1 }} />
+                    <Typography sx={{ flexGrow: 1 }}>Sign in with Google</Typography>
+                </SignInButton>
             </div>
         </>
     );

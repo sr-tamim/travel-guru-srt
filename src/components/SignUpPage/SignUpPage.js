@@ -27,7 +27,7 @@ const SignUpPage = () => {
     return (
         <>
             <div className="signUp-container">
-                <div>
+                <div className="form-container">
                     <Typography variant="h3" >Create an account</Typography>
                     <form>
                         <FormControl sx={{ m: 1 }} color="warning" variant="standard" fullWidth >

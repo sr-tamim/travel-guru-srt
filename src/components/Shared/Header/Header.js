@@ -12,6 +12,7 @@ import SearchIcon from '@mui/icons-material/Search';
 import { AccountCircle } from '@mui/icons-material';
 import { Button, Menu, MenuItem } from '@mui/material';
 import { NavLink, useLocation } from 'react-router-dom';
+import useUserContext from '../../../Firebase/useUserContext';
 
 
 const toggleHeaderVisibility = () => {
@@ -21,6 +22,8 @@ const toggleHeaderVisibility = () => {
 
 
 const Header = () => {
+    const { user, logout } = useUserContext();
+
     const { pathname } = useLocation();
     const pageURL = pathname === '/' ? '/home' : pathname;
     const themeColor = pageURL === '/home' ? 'white' : 'black';
@@ -68,11 +71,6 @@ const Header = () => {
         },
     }));
 
-    const HeaderLinksContainer = styled('div')(({ theme }) => ({
-        [theme.breakpoints.down('md')]: {
-            background: pageURL === '/home' ? '#00000099' : '#ffffff99'
-        }
-    }))
 
     const [anchorEl, setAnchorEl] = React.useState(null);
     const handleMenu = (event) => {
@@ -84,7 +82,7 @@ const Header = () => {
 
 
     return (
-        <Box sx={{ flexGrow: 1 }}>
+        <Box>
             <AppBar position="fixed" id="header" sx={{
                 background: 'transparent', boxShadow: 'initial'
             }}>
@@ -113,7 +111,7 @@ const Header = () => {
                         <StyledInputBase placeholder="Search Your Destination…"
                             inputProps={{ 'id': 'searchField', 'aria-label': 'search' }} />
                     </Search>
-                    <HeaderLinksContainer noWrap id="header-links" >
+                    <Box noWrap id="header-links" >
                         <NavLink to="/home"
                             activeStyle={{ color: 'orange' }}
                             style={{
@@ -145,17 +143,19 @@ const Header = () => {
                             }}>Contact</Typography>
                         </NavLink>
 
-                        {true ?
+                        {!user ?
                             <NavLink to="/login" style={{ textDecoration: 'none' }}><Button variant="contained" color="warning" sx={{ m: 1 }}>Login</Button></NavLink> :
                             <div>
                                 <IconButton
-                                    size="large"
+                                    size="large" color="warning"
                                     aria-label="account of current user"
                                     aria-controls="menu-appbar"
                                     aria-haspopup="true"
-                                    onClick={handleMenu}
-                                    color="inherit" >
-                                    <AccountCircle />
+                                    onClick={handleMenu}>
+                                    {!user.photoURL ? <AccountCircle /> :
+                                        <img src={user.photoURL} alt="" style={{
+                                            width: '40px', borderRadius: '50%'
+                                        }} />}
                                 </IconButton>
                                 <Menu
                                     id="menu-appbar"
@@ -170,13 +170,14 @@ const Header = () => {
                                         horizontal: 'right',
                                     }}
                                     open={Boolean(anchorEl)}
-                                    onClose={handleClose} >
+                                    onClose={handleClose}>
                                     <MenuItem onClick={handleClose}>Profile</MenuItem>
-                                    <MenuItem onClick={handleClose}>My account</MenuItem>
+                                    <MenuItem
+                                        onClick={() => { handleClose(); logout() }}>Logout</MenuItem>
                                 </Menu>
                             </div>
                         }
-                    </HeaderLinksContainer>
+                    </Box>
                 </Toolbar>
             </AppBar>
         </Box>
