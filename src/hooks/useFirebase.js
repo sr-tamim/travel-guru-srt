@@ -1,5 +1,5 @@
 // Import the functions you need from the SDKs you need
-import { getAuth, onAuthStateChanged, signOut, updateProfile } from "@firebase/auth";
+import { getAuth, onAuthStateChanged, signOut } from "@firebase/auth";
 import { initializeApp } from "firebase/app";
 import { useState } from "react";
 import firebaseConfig from "../Firebase/firebase.config";

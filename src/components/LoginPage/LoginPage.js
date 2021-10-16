@@ -17,7 +17,7 @@ const SignInButton = styled(Box)(({ theme }) => ({
 }))
 
 const LoginPage = () => {
-    const { googleLogin, facebookLogin, emailLogin, error } = useUserContext();
+    const { googleLogin, facebookLogin, emailLogin, error, setError } = useUserContext();
     const [values, setValues] = React.useState({
         email: '',
         password: '',
@@ -37,7 +37,13 @@ const LoginPage = () => {
         event.preventDefault();
     };
     const handleSubmit = () => {
-        values.email !== '' && values.password !== '' && emailLogin(values.email, values.password);
+        const { email, password } = values;
+        let err;
+        email === '' ? err = "Email is required" :
+            password === '' ? err = "Password is required" :
+                emailLogin(email, password);
+
+        err && setError({ message: err });
     }
 
     return (
