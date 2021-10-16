@@ -6,6 +6,8 @@ import LoginPage from './components/LoginPage/LoginPage';
 import SignUpPage from './components/SignUpPage/SignUpPage';
 import changeHeaderBack from './utilities/changeHeaderBack';
 import UserContextProvider from './components/UserContextProvider/UserContextProvider';
+import PrivateRoute from './components/PrivateRoute/PrivateRoute';
+import UserProfile from './components/UserProfile/UserProfile';
 
 
 function App() {
@@ -21,6 +23,7 @@ function App() {
             <Route path="/home"><HomePage /></Route>
             <Route path="/login"><LoginPage /></Route>
             <Route path="/signup"><SignUpPage /></Route>
+            <PrivateRoute path="/profile"><UserProfile /></PrivateRoute>
           </Switch>
         </BrowserRouter>
       </UserContextProvider>
