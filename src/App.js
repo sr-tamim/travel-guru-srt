@@ -8,6 +8,7 @@ import changeHeaderBack from './utilities/changeHeaderBack';
 import UserContextProvider from './components/UserContextProvider/UserContextProvider';
 import PrivateRoute from './components/PrivateRoute/PrivateRoute';
 import UserProfile from './components/UserProfile/UserProfile';
+import BookingPage from './components/BookingPage/BookingPage';
 
 
 function App() {
@@ -24,6 +25,7 @@ function App() {
             <Route path="/login"><LoginPage /></Route>
             <Route path="/signup"><SignUpPage /></Route>
             <PrivateRoute path="/profile"><UserProfile /></PrivateRoute>
+            <PrivateRoute path="/booking/:id"><BookingPage /></PrivateRoute>
           </Switch>
         </BrowserRouter>
       </UserContextProvider>

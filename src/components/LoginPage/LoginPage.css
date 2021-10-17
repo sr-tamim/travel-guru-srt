@@ -7,7 +7,7 @@
 
 .login-container .form-container, .signUp-container .form-container{
     padding: 50px;
-    margin: 20px;
+    margin: 40px 0;
     border: 2px solid rgb(172, 172, 172);
     border-radius: 5px;
 }

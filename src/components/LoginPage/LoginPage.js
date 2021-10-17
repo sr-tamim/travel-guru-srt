@@ -17,7 +17,8 @@ const SignInButton = styled(Box)(({ theme }) => ({
 }))
 
 const LoginPage = () => {
-    const { user, googleLogin, facebookLogin, emailLogin, error, setError } = useUserContext();
+    const { user, googleLogin, facebookLogin,
+        emailLogin, error, setError } = useUserContext();
     const [values, setValues] = React.useState({
         email: '',
         password: '',
@@ -51,7 +52,7 @@ const LoginPage = () => {
             <div className="login-container">
                 <div className="form-container">
                     <Typography variant="h3" >Login</Typography>
-                    <form>
+                    <form style={{ margin: '20px 0 0' }}>
                         <FormControl sx={{ m: 1 }} color="warning" variant="standard" fullWidth >
                             <InputLabel htmlFor="login-email">Email</InputLabel>
                             <Input

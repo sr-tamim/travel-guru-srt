@@ -26,7 +26,7 @@ const Header = () => {
 
     const { pathname } = useLocation();
     const pageURL = pathname === '/' ? '/home' : pathname;
-    const themeColor = pageURL === '/home' ? 'white' : 'black';
+    const themeColor = pageURL === '/home' || pageURL.indexOf('/booking') !== -1 ? 'white' : 'black';
 
     const Search = styled('div')(({ theme }) => ({
         position: 'relative',
@@ -92,7 +92,7 @@ const Header = () => {
                 }}>
                     <NavLink to="/">
                         <Box id='header-logo'
-                            sx={{ filter: pageURL === '/home' && 'brightness(100)' }}>
+                            sx={{ filter: themeColor === 'white' && 'brightness(100)' }}>
                             <img src="./logo192.png" alt="" style={{ width: '100%' }} />
                         </Box>
                     </NavLink>

@@ -11,6 +11,7 @@ import { autoPlay } from 'react-swipeable-views-utils';
 import usePlaces from '../../../hooks/usePlaces';
 import "./HeroSection.css";
 import changeHeaderBack from '../../../utilities/changeHeaderBack';
+import { NavLink } from 'react-router-dom';
 
 const AutoPlaySwipeableViews = autoPlay(SwipeableViews);
 
@@ -69,9 +70,11 @@ const HeroSection = () => {
                             {places[activeStep]?.shortDescription}
                         </p>
                         <Box component="div">
-                            <Button size="large" variant="contained" color="warning" className="booking">
-                                Booking <ArrowRightAltIcon fontSize="large" />
-                            </Button>
+                            <NavLink to={`/booking/${places[activeStep].id}`}
+                                style={{ textDecoration: 'none' }}>
+                                <Button size="large" variant="contained" color="warning" className="booking">
+                                    Booking <ArrowRightAltIcon fontSize="large" />
+                                </Button></NavLink>
                         </Box>
                     </Box>
                     <Box component="div" className="hero-carousel">

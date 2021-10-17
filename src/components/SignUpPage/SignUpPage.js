@@ -1,13 +1,15 @@
 import React from 'react';
 import { Typography, FormControl, InputLabel, InputAdornment, IconButton, Input, Button, FormHelperText } from '@mui/material';
 import { Visibility, VisibilityOff } from '@mui/icons-material';
-import { Box } from '@mui/system';
+import { Box, styled } from '@mui/system';
 import { NavLink, Redirect } from 'react-router-dom';
 import "../LoginPage/LoginPage.css";
 import useUserContext from '../../Firebase/useUserContext';
+import GoogleIcon from '@mui/icons-material/Google';
+import FacebookRoundedIcon from '@mui/icons-material/FacebookRounded';
 
 const SignUpPage = () => {
-    const { emailSignUp, error, setError, user } = useUserContext();
+    const { googleLogin, facebookLogin, emailSignUp, error, setError, user } = useUserContext();
     const [values, setValues] = React.useState({
         name: '',
         email: '',
@@ -39,12 +41,20 @@ const SignUpPage = () => {
         err && setError({ message: err });
     }
 
+    const SignInButton = styled(Box)(({ theme }) => ({
+        width: '100%', maxWidth: '400px', textAlign: 'center',
+        display: 'flex', alignItems: 'center',
+        padding: '10px', margin: '20px auto', cursor: 'pointer',
+        border: '1px solid grey', borderRadius: '30px',
+        '&:hover': { background: '#ED6C02', color: 'white' },
+    }))
+
     return (
         <>{user ? <Redirect to="/profile" /> :
             <div className="signUp-container">
                 <div className="form-container">
                     <Typography variant="h3" >Create an account</Typography>
-                    <form>
+                    <form style={{ margin: '20px 0 0' }}>
                         <FormControl sx={{ m: 1 }} color="warning" variant="standard" fullWidth >
                             <InputLabel htmlFor="signUp-name">Name</InputLabel>
                             <Input
@@ -114,6 +124,14 @@ const SignUpPage = () => {
                         </Box>
                     </form>
                 </div>
+                <SignInButton onClick={googleLogin}>
+                    <GoogleIcon sx={{ mr: 1 }} />
+                    <Typography sx={{ flexGrow: 1 }}>Sign in with Google</Typography>
+                </SignInButton>
+                <SignInButton onClick={facebookLogin}>
+                    <FacebookRoundedIcon sx={{ mr: 1 }} />
+                    <Typography sx={{ flexGrow: 1 }}>Sign in with Facebook</Typography>
+                </SignInButton>
             </div>
         }</>
     );
