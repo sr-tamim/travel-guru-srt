@@ -40,7 +40,7 @@ const SignUpPage = () => {
     }
 
     return (
-        <>{!user ? <Redirect to="/profile" /> :
+        <>{user ? <Redirect to="/profile" /> :
             <div className="signUp-container">
                 <div className="form-container">
                     <Typography variant="h3" >Create an account</Typography>
@@ -100,7 +100,7 @@ const SignUpPage = () => {
                                 }
                             />
                         </FormControl>
-                        <FormHelperText sx={{ color: 'red' }}>{error && error.message}</FormHelperText>
+                        <FormHelperText sx={{ color: 'red', mx: 1 }}>{error && error.message}</FormHelperText>
 
                         <Button variant="contained" size="large" color="warning"
                             sx={{ width: '100%', margin: '30px 0' }}

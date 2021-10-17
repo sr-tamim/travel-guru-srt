@@ -3,7 +3,7 @@ import { Typography, FormControl, InputLabel, InputAdornment, IconButton, Input,
 import "./LoginPage.css";
 import { Visibility, VisibilityOff } from '@mui/icons-material';
 import { Box, styled } from '@mui/system';
-import { NavLink } from 'react-router-dom';
+import { NavLink, Redirect } from 'react-router-dom';
 import useUserContext from '../../Firebase/useUserContext';
 import GoogleIcon from '@mui/icons-material/Google';
 import FacebookRoundedIcon from '@mui/icons-material/FacebookRounded';
@@ -17,7 +17,7 @@ const SignInButton = styled(Box)(({ theme }) => ({
 }))
 
 const LoginPage = () => {
-    const { googleLogin, facebookLogin, emailLogin, error, setError } = useUserContext();
+    const { user, googleLogin, facebookLogin, emailLogin, error, setError } = useUserContext();
     const [values, setValues] = React.useState({
         email: '',
         password: '',
@@ -47,7 +47,7 @@ const LoginPage = () => {
     }
 
     return (
-        <>
+        <>{user ? <Redirect to="/profile" /> :
             <div className="login-container">
                 <div className="form-container">
                     <Typography variant="h3" >Login</Typography>
@@ -81,7 +81,7 @@ const LoginPage = () => {
                             />
                         </FormControl>
 
-                        <FormHelperText sx={{ color: 'red' }}>{error && error.message}</FormHelperText>
+                        <FormHelperText sx={{ color: 'red', mx: 1 }}>{error && error.message}</FormHelperText>
 
                         <Box><Typography sx={{ textAlign: 'right' }}>Forgot Password</Typography></Box>
 
@@ -109,7 +109,7 @@ const LoginPage = () => {
                     <Typography sx={{ flexGrow: 1 }}>Sign in with Facebook</Typography>
                 </SignInButton>
             </div>
-        </>
+        }</>
     );
 };
 

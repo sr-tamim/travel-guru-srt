@@ -172,7 +172,9 @@ const Header = () => {
                                     open={Boolean(anchorEl)}
                                     onClose={handleClose}>
                                     <MenuItem onClick={handleClose}>
-                                        <NavLink to="/profile"> Profile</NavLink>
+                                        <NavLink to="/profile" style={{
+                                            textDecoration: 'none', color: 'inherit'
+                                        }} >Profile</NavLink>
                                     </MenuItem>
                                     <MenuItem
                                         onClick={() => { handleClose(); logout() }}>Logout</MenuItem>
