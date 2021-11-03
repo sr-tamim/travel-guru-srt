@@ -14,10 +14,11 @@ const auth = getAuth();
 
 const useFirebase = () => {
     const [user, setUser] = useState(null);
+    const [userLoading, setUserLoading] = useState(true);
     const [error, setError] = useState(null);
-    console.log(error);
     onAuthStateChanged(auth, (newUser) => {
         newUser ? setUser(newUser) && setError(null) : user && setUser(null);
+        userLoading && setUserLoading(false);
     })
 
     const googleLogin = () => googleSignIn(auth).catch(err => setError(err));
@@ -28,7 +29,9 @@ const useFirebase = () => {
     const logout = () => signOut(auth).catch(err => setError(err));
 
     return {
-        user, setUser, error, setError, googleLogin, facebookLogin,
+        user, setUser, userLoading,
+        error, setError,
+        googleLogin, facebookLogin,
         emailSignUp, emailLogin, logout
     }
 }

@@ -2,28 +2,28 @@
     {
         "id": 1,
         "label": "COX'S BAZAR",
-        "imgPath": "./image/coxs-bazar.png",
+        "imgPath": "/image/coxs-bazar.png",
         "shortDescription": "Cox's Bazar is a city, fishing port, tourism centre, and district headquarters in southeastern Bangladesh. It is famous mostly for its long natural sandy",
         "description": "Cox’s Bazar is a town on the southeast coast of Bangladesh. It’s known for its very long, sandy beachfront, stretching from Sea Beach in the north to Kolatoli Beach in the south. Aggameda Khyang monastery is home to bronze statues and centuries-old Buddhist manuscripts. South of town, the tropical rainforest of Himchari National Park has waterfalls and many birds. North, sea turtles breed on nearby Sonadia Island."
     },
     {
         "id": 2,
         "label": "SREEMANGAL",
-        "imgPath": "./image/sreemangal.png",
+        "imgPath": "/image/sreemangal.png",
         "shortDescription": "Despite being a small administrative unit, an Upazilla, under Moulvibazar district of Sylhet, Sreemangal exists as a prime place for tourists’ attraction having earned the recognition of being a town under the British colonial era in the 19th century.",
         "description": "There are loads of exciting destinations with fascinating scenic beauty scattered in or around the Srimangal upazilla of Maulvibazar district. Madhobpur Lake is one of the main tourist attractions in the area, and is home to the Great White-Bellied Heron, the only confirmed site in Bangladesh. The Baikka beel is also a nearby body of water and home to the Large-billed reed warbler."
     },
     {
         "id": 3,
         "label": "SUNDARBANS",
-        "imgPath": "./image/sundarbans.png",
+        "imgPath": "/image/sundarbans.png",
         "shortDescription": "The Sundarbans is a cluster of low-lying islands in the Bay of Bengal, spread across India and Bangladesh, famous for its unique mangrove forests.",
         "description": "Sundarbans is a mangrove area in the delta formed by the confluence of the Ganges, Brahmaputra and Meghna Rivers in the Bay of Bengal. It spans from the Hooghly River in India's state of West Bengal to the Baleswar River in Bangladesh's division of Khulna. This active delta region is among the largest in the world, measuring about 40,000 sq km."
     },
     {
         "id": 4,
         "label": "SAJEK",
-        "imgPath": "./image/sajek.png",
+        "imgPath": "/image/sajek.png",
         "shortDescription": "Sajek Valley, currently the most popular destination for pilgrims/travelers, is located in the biggest union of Bangladesh, Baghaichari Upazila of Rangamati district.",
         "description": "Sajek Valley is one of the popular tourist spots in Bangladesh situated among the hills of the Kasalong range of mountains in Sajek union, Baghaichhari Upazila in Rangamati District. The valley is 2,000 feet above sea level. Sajek valley is known as the Queen of Hills & Roof of Rangamati."
     }

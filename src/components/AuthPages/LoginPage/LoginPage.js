@@ -4,9 +4,9 @@ import "./LoginPage.css";
 import { Visibility, VisibilityOff } from '@mui/icons-material';
 import { Box, styled } from '@mui/system';
 import { NavLink, Redirect } from 'react-router-dom';
-import useUserContext from '../../Firebase/useUserContext';
 import GoogleIcon from '@mui/icons-material/Google';
 import FacebookRoundedIcon from '@mui/icons-material/FacebookRounded';
+import useUserContext from '../../../Firebase/useUserContext';
 
 const SignInButton = styled(Box)(({ theme }) => ({
     width: '100%', maxWidth: '400px', textAlign: 'center',

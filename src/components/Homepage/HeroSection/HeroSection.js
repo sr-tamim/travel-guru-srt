@@ -8,10 +8,10 @@ import KeyboardArrowRight from '@mui/icons-material/KeyboardArrowRight';
 import ArrowRightAltIcon from '@mui/icons-material/ArrowRightAlt';
 import SwipeableViews from 'react-swipeable-views';
 import { autoPlay } from 'react-swipeable-views-utils';
-import usePlaces from '../../../hooks/usePlaces';
 import "./HeroSection.css";
 import changeHeaderBack from '../../../utilities/changeHeaderBack';
 import { NavLink } from 'react-router-dom';
+import usePlacesContext from '../../../utilities/usePlacesContext';
 
 const AutoPlaySwipeableViews = autoPlay(SwipeableViews);
 
@@ -31,7 +31,7 @@ const HeroContainer = styled('div')(({ theme }) => ({
 const HeroSection = () => {
     const theme = useTheme();
 
-    const places = usePlaces();
+    const { places } = usePlacesContext();
     const maxSteps = places && places.length;
 
     const [activeStep, setActiveStep] = React.useState(0);
@@ -50,16 +50,16 @@ const HeroSection = () => {
     };
 
 
-    return (<>{!places ? null :
+    return (<>{places &&
         <Box sx={{
-            height: '100vh', minHeight: '600px',
+            height: '100vh',
             background: `url(${places[backgroundImg].imgPath}) center`,
             backgroundSize: 'cover', backgroundAttachment: 'fixed',
             transition: 'background 300ms ease-in 300ms'
         }}>
             <Box position="absolute" onScroll={changeHeaderBack} sx={{
                 width: '100%', height: '100%', margin: 0, overflow: 'auto',
-                background: '#00000099', backgroundAttachment: 'fixed'
+                background: '#00000099', backgroundAttachment: 'fixed',
             }}>
                 <HeroContainer id="hero-container">
                     <Box component="div" className="hero-details">
@@ -149,7 +149,8 @@ const HeroSection = () => {
                     </Box>
                 </HeroContainer>
             </Box>
-        </Box>}</>
+        </Box>
+    }</>
     );
 };
 

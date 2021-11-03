@@ -93,7 +93,7 @@ const Header = () => {
                     <NavLink to="/">
                         <Box id='header-logo'
                             sx={{ filter: themeColor === 'white' && 'brightness(100)' }}>
-                            <img src="./logo192.png" alt="" style={{ width: '100%' }} />
+                            <img src="/logo192.png" alt="" style={{ width: '100%' }} />
                         </Box>
                     </NavLink>
                     <Box id="header-menu-toggler">
@@ -113,7 +113,7 @@ const Header = () => {
                     </Search>
                     <Box noWrap id="header-links" >
                         <NavLink to="/home"
-                            activeStyle={{ color: 'orange' }}
+                            activeClassName="active"
                             style={{
                                 color: themeColor,
                                 textDecoration: 'none'
@@ -122,8 +122,7 @@ const Header = () => {
                                 padding: '5px 10px'
                             }}>Home</Typography>
                         </NavLink>
-                        <NavLink to="/blogs"
-                            activeStyle={{ color: 'orange' }}
+                        <NavLink to="/blogs" activeClassName="active"
                             style={{
                                 color: themeColor,
                                 textDecoration: 'none'
@@ -132,8 +131,7 @@ const Header = () => {
                                 padding: '5px 10px'
                             }}>Blogs</Typography>
                         </NavLink>
-                        <NavLink to="/contact"
-                            activeStyle={{ color: 'orange' }}
+                        <NavLink to="/contact" activeClassName="active"
                             style={{
                                 color: themeColor,
                                 textDecoration: 'none'
@@ -151,7 +149,12 @@ const Header = () => {
                                     aria-label="account of current user"
                                     aria-controls="menu-appbar"
                                     aria-haspopup="true"
-                                    onClick={handleMenu}>
+                                    onClick={handleMenu}
+                                    sx={{
+                                        padding: 0, margin: '0 15px',
+                                        background: 'gray'
+                                    }}
+                                >
                                     {!user.photoURL ? <AccountCircle /> :
                                         <img src={user.photoURL} alt="" style={{
                                             width: '40px', borderRadius: '50%'

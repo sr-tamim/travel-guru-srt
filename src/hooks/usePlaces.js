@@ -6,7 +6,14 @@ const usePlaces = () => {
     useEffect(() => {
         fetch('/placesData.json').then(r => r.json()).then(d => setPlaces(d));
     }, []);
-    return places;
+    console.log(places);
+
+    function getPlaceByID(id) {
+        return places[id];
+    }
+    return {
+        places, setPlaces, getPlaceByID
+    };
 };
 
 export default usePlaces;

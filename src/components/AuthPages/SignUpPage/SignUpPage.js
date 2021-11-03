@@ -4,9 +4,9 @@ import { Visibility, VisibilityOff } from '@mui/icons-material';
 import { Box, styled } from '@mui/system';
 import { NavLink, Redirect } from 'react-router-dom';
 import "../LoginPage/LoginPage.css";
-import useUserContext from '../../Firebase/useUserContext';
 import GoogleIcon from '@mui/icons-material/Google';
 import FacebookRoundedIcon from '@mui/icons-material/FacebookRounded';
+import useUserContext from '../../../Firebase/useUserContext';
 
 const SignUpPage = () => {
     const { googleLogin, facebookLogin, emailSignUp, error, setError, user } = useUserContext();

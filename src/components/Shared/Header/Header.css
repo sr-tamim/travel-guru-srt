@@ -10,8 +10,11 @@
     align-items: center;
     padding: 0 10px;
 }
-#header-links p{font-size: 20px;text-shadow: 0 0 10px rgb(88, 88, 88);}
-#header-links p:hover{ font-weight: bold; }
+#header-links p{font-size: 20px;}
+#header-links p:hover{ color: darkorange; }
+#header-links a.active p{
+    font-weight: bold;
+}
 
 #searchField::placeholder{
     color: white;

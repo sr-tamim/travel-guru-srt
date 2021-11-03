@@ -2,9 +2,8 @@ import { Typography } from '@mui/material';
 import { Box, styled } from '@mui/system';
 import React from 'react';
 import { useParams } from 'react-router';
-import useUserContext from '../../Firebase/useUserContext';
-import usePlaces from '../../hooks/usePlaces';
 import changeHeaderBack from '../../utilities/changeHeaderBack';
+import usePlacesContext from '../../utilities/usePlacesContext';
 
 const BookingContainer = styled('div')(({ theme }) => ({
     maxWidth: '1200px', height: '100%',
@@ -19,17 +18,16 @@ const BookingContainer = styled('div')(({ theme }) => ({
 }));
 
 const BookingPage = () => {
-    const { userLoading } = useUserContext();
-    const places = usePlaces();
+    const { getPlaceByID } = usePlacesContext();
     const { id } = useParams();
-    console.log(id);
+    const place = getPlaceByID(id);
 
     return (
         <>
-            {!places ? null :
+            {place &&
                 <Box sx={{
-                    height: '100vh', minHeight: '600px',
-                    background: `url(${places[id].imgPath}) center`,
+                    height: '100vh',
+                    background: `url(${place.imgPath}) center`,
                     backgroundSize: 'cover', backgroundAttachment: 'fixed',
                     transition: 'background 300ms ease-in 300ms'
                 }}>
@@ -41,10 +39,10 @@ const BookingPage = () => {
                         <BookingContainer id="hero-container">
                             <Box component="div" className="hero-details">
                                 <Typography variant="h1" className="place-name">
-                                    {places[id]?.label}
+                                    {place?.label}
                                 </Typography>
                                 <p className="place-description">
-                                    {places[id]?.description}
+                                    {place?.description}
                                 </p>
                             </Box>
                         </BookingContainer>
