@@ -2,7 +2,6 @@ import './App.css';
 import { BrowserRouter, Route, Switch } from "react-router-dom";
 import Header from './components/Shared/Header/Header';
 import HomePage from './components/Homepage/Home/HomePage';
-import changeHeaderBack from './utilities/changeHeaderBack';
 import PrivateRoute from './components/PrivateRoute/PrivateRoute';
 import UserProfile from './components/UserProfile/UserProfile';
 import PlacesContextProvider from './contexts/PlacesContext';
@@ -10,13 +9,12 @@ import BookingPage from './components/BookingPage/BookingPage';
 import UserContextProvider from './contexts/UserContextProvider/UserContextProvider';
 import LoginPage from './components/AuthPages/LoginPage/LoginPage';
 import SignUpPage from './components/AuthPages/SignUpPage/SignUpPage';
+import changeHeader from './utilities/changeHeader';
 
 
 function App() {
-  window.addEventListener('scroll', changeHeaderBack);
-
   return (
-    <div className="App" onScroll={changeHeaderBack}>
+    <div className="App" onScroll={changeHeader}>
       <UserContextProvider><PlacesContextProvider>
         <BrowserRouter>
           <Header />

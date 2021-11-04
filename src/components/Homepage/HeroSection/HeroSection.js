@@ -9,7 +9,7 @@ import ArrowRightAltIcon from '@mui/icons-material/ArrowRightAlt';
 import SwipeableViews from 'react-swipeable-views';
 import { autoPlay } from 'react-swipeable-views-utils';
 import "./HeroSection.css";
-import changeHeaderBack from '../../../utilities/changeHeaderBack';
+import changeHeaderBack from '../../../utilities/changeHeader';
 import { NavLink } from 'react-router-dom';
 import usePlacesContext from '../../../utilities/usePlacesContext';
 

@@ -11,7 +11,7 @@ import MenuIcon from '@mui/icons-material/Menu';
 import SearchIcon from '@mui/icons-material/Search';
 import { AccountCircle } from '@mui/icons-material';
 import { Button, Menu, MenuItem } from '@mui/material';
-import { NavLink, useLocation } from 'react-router-dom';
+import { NavLink } from 'react-router-dom';
 import useUserContext from '../../../Firebase/useUserContext';
 
 
@@ -24,17 +24,13 @@ const toggleHeaderVisibility = () => {
 const Header = () => {
     const { user, logout } = useUserContext();
 
-    const { pathname } = useLocation();
-    const pageURL = pathname === '/' ? '/home' : pathname;
-    const themeColor = pageURL === '/home' || pageURL.indexOf('/booking') !== -1 ? 'white' : 'black';
-
     const Search = styled('div')(({ theme }) => ({
         position: 'relative',
-        border: '1px solid white',
+        border: '1px solid black',
         borderRadius: theme.shape.borderRadius,
-        backgroundColor: pageURL === '/home' ? alpha(theme.palette.common.white, 0.25) : alpha(theme.palette.common.black, 0.25),
+        backgroundColor: alpha(theme.palette.common.black, 0.15),
         '&:hover': {
-            backgroundColor: pageURL === '/home' ? alpha(theme.palette.common.white, 0.2) : alpha(theme.palette.common.black, 0.2),
+            backgroundColor: alpha(theme.palette.common.black, 0.25),
         },
         margin: '20px 20px 0',
         width: '100%',
@@ -45,6 +41,7 @@ const Header = () => {
     }));
 
     const SearchIconWrapper = styled('div')(({ theme }) => ({
+        color: 'inherit',
         padding: theme.spacing(0, 2),
         height: '100%',
         position: 'absolute',
@@ -84,21 +81,21 @@ const Header = () => {
     return (
         <Box>
             <AppBar position="fixed" id="header" sx={{
-                background: 'transparent', boxShadow: 'initial'
+                background: '#ffedd8cc', boxShadow: 'initial',
+                maxHeight: '200px', overflow: 'hidden', transition: '500ms ease'
             }}>
                 <Toolbar sx={{
                     width: '100%', maxWidth: '1400px', margin: 'auto',
                     padding: '20px 10px'
                 }}>
                     <NavLink to="/">
-                        <Box id='header-logo'
-                            sx={{ filter: themeColor === 'white' && 'brightness(100)' }}>
+                        <Box id='header-logo'>
                             <img src="/logo192.png" alt="" style={{ width: '100%' }} />
                         </Box>
                     </NavLink>
                     <Box id="header-menu-toggler">
                         <IconButton size="large" edge="start"
-                            sx={{ mr: 2, color: pageURL === '/home' && 'white' }}
+                            sx={{ mr: 2, color: 'black' }}
                             aria-label="open drawer"
                             onClick={toggleHeaderVisibility}>
                             <MenuIcon />
@@ -113,30 +110,21 @@ const Header = () => {
                     </Search>
                     <Box noWrap id="header-links" >
                         <NavLink to="/home"
-                            activeClassName="active"
-                            style={{
-                                color: themeColor,
-                                textDecoration: 'none'
-                            }}>
+                            activeClassName="active">
                             <Typography sx={{
+                                fontSize: 20,
                                 padding: '5px 10px'
                             }}>Home</Typography>
                         </NavLink>
-                        <NavLink to="/blogs" activeClassName="active"
-                            style={{
-                                color: themeColor,
-                                textDecoration: 'none'
-                            }}>
+                        <NavLink to="/blogs" activeClassName="active">
                             <Typography sx={{
+                                fontSize: 20,
                                 padding: '5px 10px'
                             }}>Blogs</Typography>
                         </NavLink>
-                        <NavLink to="/contact" activeClassName="active"
-                            style={{
-                                color: themeColor,
-                                textDecoration: 'none'
-                            }}>
+                        <NavLink to="/contact" activeClassName="active">
                             <Typography sx={{
+                                fontSize: 20,
                                 padding: '5px 10px'
                             }}>Contact</Typography>
                         </NavLink>

@@ -2,7 +2,7 @@ import { Typography } from '@mui/material';
 import { Box, styled } from '@mui/system';
 import React from 'react';
 import { useParams } from 'react-router';
-import changeHeaderBack from '../../utilities/changeHeaderBack';
+import changeHeaderBack from '../../utilities/changeHeader';
 import usePlacesContext from '../../utilities/usePlacesContext';
 
 const BookingContainer = styled('div')(({ theme }) => ({
