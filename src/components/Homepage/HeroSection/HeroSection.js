@@ -69,7 +69,8 @@ const HeroSection = () => {
                         <p className="place-description">
                             {places[activeStep]?.shortDescription}
                         </p>
-                        <Box component="div">
+                        <Box component="div"
+                            sx={{ marginBottom: 10 }}>
                             <NavLink to={`/booking/${places[activeStep].id}`}
                                 style={{ textDecoration: 'none' }}>
                                 <Button size="large" variant="contained" color="warning" className="booking">
@@ -125,7 +126,7 @@ const HeroSection = () => {
                                 sx={{
                                     position: 'absolute', top: '100%',
                                     display: 'flex', width: '100%',
-                                    justifyContent: 'center', padding: '10px 0'
+                                    justifyContent: 'center', padding: '10px 0 100px'
                                 }}>
                                 <Button onClick={handleBack} disabled={activeStep === 0} sx={{
                                     background: 'white', padding: 0,

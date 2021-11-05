@@ -7,7 +7,7 @@ const ProgressIndicator = () => {
         <Box sx={{
             width: '100%', position: 'fixed', top: 0
         }}>
-            <LinearProgress color="warning" sx={{ height: '8px' }} />
+            <LinearProgress color="primary" sx={{ height: '8px', background: 'orangered' }} />
         </Box>
     );
 };

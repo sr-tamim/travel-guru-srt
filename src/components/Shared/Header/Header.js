@@ -140,7 +140,7 @@ const Header = () => {
                                     onClick={handleMenu}
                                     sx={{
                                         padding: 0, margin: '0 15px',
-                                        background: 'gray'
+                                        background: 'white'
                                     }}
                                 >
                                     {!user.photoURL ? <AccountCircle /> :

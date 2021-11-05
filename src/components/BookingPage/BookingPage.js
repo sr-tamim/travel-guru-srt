@@ -33,7 +33,7 @@ const BookingPage = () => {
                 }}>
                     <Box position="absolute" onScroll={changeHeaderBack}
                         sx={{
-                            width: '100%', height: '100%', margin: 0, overflow: 'auto',
+                            width: '100%', height: '100%', margin: 0, overflo1w: 'auto',
                             background: '#00000099', backgroundAttachment: 'fixed'
                         }}>
                         <BookingContainer id="hero-container">
